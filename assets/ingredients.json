@@ -1,0 +1,302 @@
+[
+  {
+    "name": "aloe vera",
+    "safe": true,
+    "score_weight": 1,
+    "description": "Natural moisturizer, gentle on baby skin"
+  },
+  {
+    "name": "coconut oil",
+    "safe": true,
+    "score_weight": 1,
+    "description": "Natural moisturizer, safe for babies"
+  },
+  {
+    "name": "shea butter",
+    "safe": true,
+    "score_weight": 1,
+    "description": "Moisturizing and protective"
+  },
+  {
+    "name": "vitamin e",
+    "safe": true,
+    "score_weight": 1,
+    "description": "Antioxidant, safe for baby skin"
+  },
+  {
+    "name": "chamomile",
+    "safe": true,
+    "score_weight": 1,
+    "description": "Soothing and anti-inflammatory"
+  },
+  {
+    "name": "glycerin",
+    "safe": true,
+    "score_weight": 1,
+    "description": "Hydrating ingredient, draws moisture to skin in lotions"
+  },
+  {
+    "name": "peg compounds",
+    "safe": false,
+    "score_weight": -2,
+    "description": "Emulsifiers that may contain impurities in creams"
+  },
+  {
+    "name": "oat extract",
+    "safe": true,
+    "score_weight": 1,
+    "description": "Soothes irritation and protects skin barrier"
+  },
+  {
+    "name": "jojoba oil",
+    "safe": true,
+    "score_weight": 1,
+    "description": "Moisturizer, mimics skin's natural oils"
+  },
+  {
+    "name": "sunflower seed oil",
+    "safe": true,
+    "score_weight": 1,
+    "description": "Nourishing, rich in fatty acids"
+  },
+  {
+    "name": "cocoa butter",
+    "safe": true,
+    "score_weight": 1,
+    "description": "Moisturizing and protective barrier"
+  },
+  {
+    "name": "zinc oxide",
+    "safe": true,
+    "score_weight": 1,
+    "description": "Natural mineral, protects from rashes and sun"
+  },
+  {
+    "name": "beeswax",
+    "safe": true,
+    "score_weight": 1,
+    "description": "Natural emollient, forms protective barrier"
+  },
+  {
+    "name": "olive oil",
+    "safe": true,
+    "score_weight": 1,
+    "description": "Moisturizer, mild for baby skin"
+  },
+  {
+    "name": "rice starch",
+    "safe": true,
+    "score_weight": 1,
+    "description": "Natural absorbent, gentle alternative to talc"
+  },
+  {
+    "name": "calendula",
+    "safe": true,
+    "score_weight": 1,
+    "description": "Soothing, anti-inflammatory herb extract"
+  },
+  {
+    "name": "lanolin",
+    "safe": true,
+    "score_weight": 1,
+    "description": "Moisturizing, protects against dryness"
+  },
+  {
+    "name": "avocado oil",
+    "safe": true,
+    "score_weight": 1,
+    "description": "Rich in vitamins, deeply nourishing"
+  },
+  {
+    "name": "allantoin",
+    "safe": true,
+    "score_weight": 1,
+    "description": "Skin protectant, reduces irritation"
+  },
+  {
+    "name": "niacinamide",
+    "safe": true,
+    "score_weight": 1,
+    "description": "Supports skin barrier, reduces redness"
+  },
+  {
+    "name": "hyaluronic acid",
+    "safe": true,
+    "score_weight": 1,
+    "description": "Hydrates and retains skin moisture"
+  },
+  {
+    "name": "dimethicone",
+    "safe": true,
+    "score_weight": 1,
+    "description": "Safe skin protectant, prevents diaper rash"
+  },
+  {
+    "name": "colloidal oatmeal",
+    "safe": true,
+    "score_weight": 1,
+    "description": "Soothes irritation and itching"
+  },
+  {
+    "name": "cucumber extract",
+    "safe": true,
+    "score_weight": 1,
+    "description": "Cooling, reduces skin irritation"
+  },
+  {
+    "name": "almond oil",
+    "safe": true,
+    "score_weight": 1,
+    "description": "Moisturizing oil, safe for baby massage"
+  },
+  {
+    "name": "talc",
+    "safe": false,
+    "score_weight": -2,
+    "description": "May contain asbestos, respiratory risk"
+  },
+  {
+    "name": "parabens",
+    "safe": false,
+    "score_weight": -2,
+    "description": "Hormone disruptor, avoid for babies"
+  },
+  {
+    "name": "phthalates",
+    "safe": false,
+    "score_weight": -2,
+    "description": "Endocrine disruptor"
+  },
+  {
+    "name": "fragrance",
+    "safe": false,
+    "score_weight": -1,
+    "description": "May cause allergic reactions"
+  },
+  {
+    "name": "parfum",
+    "safe": false,
+    "score_weight": -1,
+    "description": "Synthetic fragrance, potential allergen"
+  },
+  {
+    "name": "sodium lauryl sulfate",
+    "safe": false,
+    "score_weight": -2,
+    "description": "Harsh surfactant, can irritate skin"
+  },
+  {
+    "name": "formaldehyde",
+    "safe": false,
+    "score_weight": -3,
+    "description": "Known carcinogen"
+  },
+  {
+    "name": "dmdm hydantoin",
+    "safe": false,
+    "score_weight": -2,
+    "description": "Releases formaldehyde"
+  },
+  {
+    "name": "mineral oil",
+    "safe": false,
+    "score_weight": -2,
+    "description": "Petroleum derivative, may clog pores"
+  },
+  {
+    "name": "petrolatum",
+    "safe": false,
+    "score_weight": -2,
+    "description": "May contain harmful impurities"
+  },
+  {
+    "name": "triclosan",
+    "safe": false,
+    "score_weight": -2,
+    "description": "Antimicrobial agent, hormone disruptor"
+  },
+  {
+    "name": "oxybenzone",
+    "safe": false,
+    "score_weight": -2,
+    "description": "Chemical sunscreen, hormone disruptor"
+  },
+  {
+    "name": "methylisothiazolinone",
+    "safe": false,
+    "score_weight": -2,
+    "description": "Preservative, can cause allergic reactions"
+  },
+  {
+    "name": "propylene glycol",
+    "safe": false,
+    "score_weight": -1,
+    "description": "May cause skin irritation in babies"
+  },
+  {
+    "name": "sodium benzoate",
+    "safe": false,
+    "score_weight": -1,
+    "description": "Can form benzene, linked to health risks"
+  },
+  {
+    "name": "benzyl alcohol",
+    "safe": false,
+    "score_weight": -2,
+    "description": "Can be toxic to infants"
+  },
+  {
+    "name": "retinol",
+    "safe": false,
+    "score_weight": -2,
+    "description": "Too harsh for baby skin, may cause irritation"
+  },
+  {
+    "name": "salicylic acid",
+    "safe": false,
+    "score_weight": -2,
+    "description": "Not recommended for babies, can irritate skin"
+  },
+  {
+    "name": "methylparaben",
+    "safe": false,
+    "score_weight": -2,
+    "description": "Preservative, hormone disruptor"
+  },
+  {
+    "name": "butylparaben",
+    "safe": false,
+    "score_weight": -2,
+    "description": "Preservative, disrupts hormones"
+  },
+  {
+    "name": "ethylparaben",
+    "safe": false,
+    "score_weight": -2,
+    "description": "Preservative, not safe for babies"
+  },
+  {
+    "name": "isopropyl alcohol",
+    "safe": false,
+    "score_weight": -2,
+    "description": "Harsh, dries out skin"
+  },
+  {
+    "name": "methanol",
+    "safe": false,
+    "score_weight": -3,
+    "description": "Toxic alcohol, unsafe for babies"
+  },
+  {
+    "name": "sulfates",
+    "safe": false,
+    "score_weight": -2,
+    "description": "Harsh detergents, strip natural oils"
+  },
+  {
+    "name": "phenoxyethanol",
+    "safe": false,
+    "score_weight": -2,
+    "description": "Preservative, may cause allergic reactions"
+  }
+]

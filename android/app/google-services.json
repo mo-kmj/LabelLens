@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "906201492340",
+    "project_id": "labellens-1582b",
+    "storage_bucket": "labellens-1582b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:906201492340:android:bd048b2d91dee408025a21",
+        "android_client_info": {
+          "package_name": "com.example.label_lens"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "906201492340-kber637bm44apo8ab5cmtb34kj1eioek.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-ayKIo2ndBPyIw8lmhhtZobT5kuujz4U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "906201492340-kber637bm44apo8ab5cmtb34kj1eioek.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
