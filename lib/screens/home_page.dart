@@ -7,6 +7,8 @@ import 'scan_page.dart';
 import 'cart_page.dart';
 import 'notifications_page.dart';
 import 'profile_page.dart';
+import 'additional_pages.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -28,6 +30,58 @@ class HomePage extends StatelessWidget {
               },
               child: const Text('Get Started'),
             ),
+                        // ---- New feature navigation buttons ----
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const PersonalizedAlertsPage()));
+              },
+              child: const Text('Personalized Alerts'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const ProductSafetyRatingPage()));
+              },
+              child: const Text('Product Safety Rating'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const HistoryPage()));
+              },
+              child: const Text('History'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const AlternativeProductsPage()));
+              },
+              child: const Text('Alternative Products'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const ProfilePageNew()));
+              },
+              child: const Text('Profile'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const SettingsPage()));
+              },
+              child: const Text('Settings'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const HelpSupportPage()));
+              },
+              child: const Text('Help & Support'),
+            ),
+            // ---- End of new buttons ----
+
           ],
         ),
       ),
