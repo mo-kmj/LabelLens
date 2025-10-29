@@ -10,6 +10,7 @@ import 'profile_page.dart';
 import 'additional_pages.dart';
 
 
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -34,14 +35,15 @@ class HomePage extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const PersonalizedAlertsPage()));
+                  MaterialPageRoute(builder: (context) => const PersonalizedAlertsPageWithData(ingredients: [])));
+
               },
               child: const Text('Personalized Alerts'),
             ),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const ProductSafetyRatingPage()));
+                  MaterialPageRoute(builder: (context) => const ProductSafetyRatingPageWithData(ingredients: [])));
               },
               child: const Text('Product Safety Rating'),
             ),
@@ -62,21 +64,21 @@ class HomePage extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const ProfilePageNew()));
+                  MaterialPageRoute(builder: (context) => const MyProfilePage()));
               },
               child: const Text('Profile'),
             ),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const SettingsPage()));
+                  MaterialPageRoute(builder: (context) => const IngredientEducationPage()));
               },
               child: const Text('Settings'),
             ),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const HelpSupportPage()));
+                  MaterialPageRoute(builder: (context) => const FeedbackPage()));
               },
               child: const Text('Help & Support'),
             ),
