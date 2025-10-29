@@ -116,3 +116,117 @@ class ProductSafetyRatingPageWithData extends StatelessWidget {
     return 'Unsafe ingredients detected. Avoid using this product.';
   }
 }
+// -----------------------------------------------------------------------------
+// 10. History Page (Saved Scans)
+// -----------------------------------------------------------------------------
+class HistoryPage extends StatelessWidget {
+  const HistoryPage({super.key});
+
+  // mock data – replace with real storage later if needed
+  final List<Map<String, dynamic>> _mockHistory = const [
+    {
+      'product': 'Baby Lotion',
+      'date': '2025-10-25',
+      'safety': 'Safe',
+    },
+    {
+      'product': 'Baby Powder',
+      'date': '2025-10-27',
+      'safety': 'Unsafe',
+    },
+    {
+      'product': 'Baby Soap',
+      'date': '2025-10-28',
+      'safety': 'Moderate',
+    },
+  ];
+
+  Color _colorForSafety(String safety) {
+    switch (safety) {
+      case 'Safe':
+        return Colors.green;
+      case 'Unsafe':
+        return Colors.red;
+      default:
+        return Colors.orange;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Scan History')),
+      body: ListView.builder(
+        itemCount: _mockHistory.length,
+        itemBuilder: (context, index) {
+          final item = _mockHistory[index];
+          return Card(
+            margin: const EdgeInsets.all(8),
+            child: ListTile(
+              leading: Icon(Icons.inventory, color: _colorForSafety(item['safety'])),
+              title: Text(item['product']),
+              subtitle: Text('Date: ${item['date']}'),
+              trailing: Text(
+                item['safety'],
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: _colorForSafety(item['safety']),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 11. Alternative Products Page
+// -----------------------------------------------------------------------------
+class AlternativeProductsPage extends StatelessWidget {
+  const AlternativeProductsPage({super.key});
+
+  final List<Map<String, String>> _alternatives = const [
+    {
+      'name': 'Organic Baby Lotion',
+      'brand': 'PureSkin',
+      'rating': '4.7/5',
+    },
+    {
+      'name': 'Natural Baby Cream',
+      'brand': 'GreenMama',
+      'rating': '4.6/5',
+    },
+    {
+      'name': 'Hypoallergenic Baby Oil',
+      'brand': 'GentleTouch',
+      'rating': '4.5/5',
+    },
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Alternative Products')),
+      body: ListView.builder(
+        itemCount: _alternatives.length,
+        itemBuilder: (context, index) {
+          final alt = _alternatives[index];
+          return Card(
+            margin: const EdgeInsets.all(8),
+            child: ListTile(
+              leading: const Icon(Icons.eco, color: Colors.green),
+              title: Text(alt['name']!),
+              subtitle: Text('Brand: ${alt['brand']}'),
+              trailing: Text(
+                alt['rating']!,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
