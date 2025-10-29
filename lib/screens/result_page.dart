@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/scan_result.dart';
 import '../services/ingredient_service.dart';
 import 'scan_page.dart';
+import 'additional_pages.dart';
 
 class ResultPage extends StatelessWidget {
   final ScanResult scanResult;
@@ -23,17 +24,16 @@ class ResultPage extends StatelessWidget {
   // Get major contributing ingredients (unsafe ones or top 3 if all safe)
   List<IngredientMatch> _getMajorIngredients() {
     if (scanResult.ingredients.isEmpty) return [];
-    
+
     // First, get all unsafe ingredients
-    var unsafeIngredients = scanResult.ingredients
-        .where((match) => !match.ingredient.safe)
-        .toList();
-    
+    var unsafeIngredients =
+        scanResult.ingredients.where((match) => !match.ingredient.safe).toList();
+
     // If there are unsafe ingredients, return up to 3
     if (unsafeIngredients.isNotEmpty) {
       return unsafeIngredients.take(3).toList();
     }
-    
+
     // If all ingredients are safe, return top 3
     return scanResult.ingredients.take(3).toList();
   }
@@ -41,7 +41,7 @@ class ResultPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final majorIngredients = _getMajorIngredients();
-    
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Scan Results'),
@@ -90,67 +90,79 @@ class ResultPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
-            
+
             // Major Contributing Ingredients (limited to 3)
             if (majorIngredients.isNotEmpty) ...[
               Text(
                 scanResult.overallSafety == SafetyLevel.unsafe
                     ? 'Harmful Contributing Ingredients:'
                     : 'Major Contributing Ingredients:',
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 16),
-              ...majorIngredients.map((match) => Card(
-                    margin: const EdgeInsets.only(bottom: 8),
-                    child: ListTile(
-                      leading: Container(
-                        width: 24,
-                        height: 24,
-                        decoration: BoxDecoration(
-                          color: match.ingredient.safe ? Colors.green : Colors.red,
-                          shape: BoxShape.circle,
-                        ),
-                        child: Icon(
-                          match.ingredient.safe ? Icons.check : Icons.close,
+              ...majorIngredients.map(
+                (match) => Card(
+                  margin: const EdgeInsets.only(bottom: 8),
+                  child: ListTile(
+                    leading: Container(
+                      width: 24,
+                      height: 24,
+                      decoration: BoxDecoration(
+                        color:
+                            match.ingredient.safe ? Colors.green : Colors.red,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(
+                        match.ingredient.safe ? Icons.check : Icons.close,
+                        color: Colors.white,
+                        size: 16,
+                      ),
+                    ),
+                    title: Text(
+                      match.ingredient.name,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: match.ingredient.safe
+                            ? Colors.green[700]
+                            : Colors.red[700],
+                      ),
+                    ),
+                    subtitle: Text(
+                      match.ingredient.description,
+                      style: TextStyle(color: Colors.grey[600]),
+                    ),
+                    trailing: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                        color:
+                            match.ingredient.safe ? Colors.green : Colors.red,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Text(
+                        match.ingredient.safe ? 'SAFE' : 'AVOID',
+                        style: const TextStyle(
                           color: Colors.white,
-                          size: 16,
-                        ),
-                      ),
-                      title: Text(
-                        match.ingredient.name,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: match.ingredient.safe ? Colors.green[700] : Colors.red[700],
-                        ),
-                      ),
-                      subtitle: Text(
-                        match.ingredient.description,
-                        style: TextStyle(color: Colors.grey[600]),
-                      ),
-                      trailing: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                        decoration: BoxDecoration(
-                          color: match.ingredient.safe ? Colors.green : Colors.red,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Text(
-                          match.ingredient.safe ? 'SAFE' : 'AVOID',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
-                  )),
+                  ),
+                ),
+              ),
             ] else ...[
               const Text(
                 'No major ingredients detected.',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.grey),
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey),
               ),
             ],
             const SizedBox(height: 32),
+
             // Action Buttons
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -159,19 +171,57 @@ class ResultPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => const ScanPage()),
+                      MaterialPageRoute(
+                          builder: (context) => const ScanPage()),
                     );
                   },
                   icon: const Icon(Icons.refresh),
                   label: const Text('Rescan'),
                 ),
                 OutlinedButton.icon(
-                  onPressed: () => Navigator.popUntil(context, (route) => route.isFirst),
+                  onPressed: () =>
+                      Navigator.popUntil(context, (route) => route.isFirst),
                   icon: const Icon(Icons.home),
                   label: const Text('Back to Home'),
                 ),
               ],
             ),
+
+            const SizedBox(height: 24),
+
+            // --- Buttons to view scan-based info ---
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PersonalizedAlertsPageWithData(
+                      ingredients: scanResult.ingredients
+                          .map((e) => e.ingredient)
+                          .toList(),
+                    ),
+                  ),
+                );
+              },
+              child: const Text('View Personalized Alerts'),
+            ),
+            const SizedBox(height: 12),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProductSafetyRatingPageWithData(
+                      ingredients: scanResult.ingredients
+                          .map((e) => e.ingredient)
+                          .toList(),
+                    ),
+                  ),
+                );
+              },
+              child: const Text('View Product Safety Rating'),
+            ),
+            // --- End of new buttons ---
           ],
         ),
       ),
