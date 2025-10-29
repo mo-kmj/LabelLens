@@ -230,3 +230,170 @@ class AlternativeProductsPage extends StatelessWidget {
     );
   }
 }
+// -----------------------------------------------------------------------------
+// 12. Ingredient Education Page
+// -----------------------------------------------------------------------------
+class IngredientEducationPage extends StatelessWidget {
+  const IngredientEducationPage({super.key});
+
+  final List<Map<String, String>> _ingredientInfo = const [
+    {
+      'name': 'Paraben',
+      'description':
+          'A preservative that can cause skin irritation. Avoid in baby products.',
+    },
+    {
+      'name': 'Fragrance',
+      'description':
+          'Synthetic fragrances can trigger allergies in sensitive skin.',
+    },
+    {
+      'name': 'Aloe Vera',
+      'description':
+          'Natural moisturizer that soothes and hydrates baby skin safely.',
+    },
+    {
+      'name': 'Zinc Oxide',
+      'description':
+          'Commonly used in diaper creams, provides a protective barrier.',
+    },
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Ingredient Education')),
+      body: ListView.builder(
+        itemCount: _ingredientInfo.length,
+        itemBuilder: (context, index) {
+          final info = _ingredientInfo[index];
+          return Card(
+            margin: const EdgeInsets.all(8),
+            child: ListTile(
+              leading: const Icon(Icons.science, color: Colors.blue),
+              title: Text(info['name']!,
+                  style: const TextStyle(fontWeight: FontWeight.bold)),
+              subtitle: Text(info['description']!),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 13. My Profile Page
+// -----------------------------------------------------------------------------
+class MyProfilePage extends StatelessWidget {
+  const MyProfilePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('My Profile')),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: const [
+            Center(
+              child: CircleAvatar(
+                radius: 50,
+                backgroundColor: Colors.blueAccent,
+                child: Icon(Icons.person, size: 60, color: Colors.white),
+              ),
+            ),
+            SizedBox(height: 20),
+            Text('Name: Harshini Prabhakaran',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            SizedBox(height: 8),
+            Text('Email: harshini@example.com',
+                style: TextStyle(fontSize: 16)),
+            SizedBox(height: 8),
+            Text('Preferred Mode: Baby Product Scanner',
+                style: TextStyle(fontSize: 16)),
+            SizedBox(height: 8),
+            Text('Account Type: Standard User',
+                style: TextStyle(fontSize: 16)),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// -----------------------------------------------------------------------------
+// 14. App Feedback Page
+// -----------------------------------------------------------------------------
+class FeedbackPage extends StatefulWidget {
+  const FeedbackPage({super.key});
+
+  @override
+  State<FeedbackPage> createState() => _FeedbackPageState();
+}
+
+class _FeedbackPageState extends State<FeedbackPage> {
+  final TextEditingController _controller = TextEditingController();
+  double _rating = 0;
+
+  void _submitFeedback() {
+    final feedback = _controller.text;
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(
+          _rating == 0 && feedback.isEmpty
+              ? 'Please provide feedback before submitting!'
+              : 'Thank you for your feedback!'),
+    ));
+    _controller.clear();
+    setState(() => _rating = 0);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('App Feedback')),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text('Rate your experience:',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            Row(
+              children: List.generate(5, (index) {
+                final starIndex = index + 1;
+                return IconButton(
+                  icon: Icon(
+                    _rating >= starIndex ? Icons.star : Icons.star_border,
+                    color: Colors.amber,
+                    size: 30,
+                  ),
+                  onPressed: () => setState(() => _rating = starIndex.toDouble()),
+                );
+              }),
+            ),
+            const SizedBox(height: 16),
+            const Text('Share your thoughts:',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            TextField(
+              controller: _controller,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: 'Type your feedback here...',
+              ),
+              maxLines: 3,
+            ),
+            const SizedBox(height: 16),
+            Center(
+              child: ElevatedButton(
+                onPressed: _submitFeedback,
+                child: const Text('Submit Feedback'),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
