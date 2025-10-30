@@ -1,7 +1,6 @@
-// lib/screens/home_page.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../providers/auth_provider.dart' as app_auth;  // Alias to avoid potential Firebase conflict
+import '../providers/auth_provider.dart' as app_auth; // Alias to avoid potential Firebase conflict
 import 'login_page.dart';
 import 'scan_page.dart';
 import 'cart_page.dart';
@@ -9,82 +8,124 @@ import 'notifications_page.dart';
 import 'profile_page.dart';
 import 'additional_pages.dart';
 
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final auth = Provider.of<app_auth.AuthProvider>(context);
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text('LabelLens', style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
-            const Text('Scan. Decode. Stay Safe.', style: TextStyle(fontSize: 18)),
-            ElevatedButton(
-              onPressed: () {
-                // Since HomePage is only shown when logged in, always navigate to ScanPage
-                Navigator.push(context, MaterialPageRoute(builder: (_) => const ScanPage()));
-              },
-              child: const Text('Get Started'),
-            ),
-                        // ---- New feature navigation buttons ----
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const PersonalizedAlertsPage()));
-              },
-              child: const Text('Personalized Alerts'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const ProductSafetyRatingPage()));
-              },
-              child: const Text('Product Safety Rating'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const HistoryPage()));
-              },
-              child: const Text('History'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const AlternativeProductsPage()));
-              },
-              child: const Text('Alternative Products'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const ProfilePageNew()));
-              },
-              child: const Text('Profile'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const SettingsPage()));
-              },
-              child: const Text('Settings'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const HelpSupportPage()));
-              },
-              child: const Text('Help & Support'),
-            ),
-            // ---- End of new buttons ----
 
-          ],
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Text(
+                  'LabelLens',
+                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Scan. Decode. Stay Safe.',
+                  style: TextStyle(fontSize: 18),
+                ),
+                const SizedBox(height: 30),
+
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => const ScanPage()));
+                  },
+                  child: const Text('Get Started'),
+                ),
+                const SizedBox(height: 12),
+
+                // ---- New feature navigation buttons ----
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const PersonalizedAlertsPage()),
+                    );
+                  },
+                  child: const Text('Personalized Alerts'),
+                ),
+                const SizedBox(height: 12),
+
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ProductSafetyRatingPage()),
+                    );
+                  },
+                  child: const Text('Product Safety Rating'),
+                ),
+                const SizedBox(height: 12),
+
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const HistoryPage()),
+                    );
+                  },
+                  child: const Text('History'),
+                ),
+                const SizedBox(height: 12),
+
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const AlternativeProductsPage()),
+                    );
+                  },
+                  child: const Text('Alternative Products'),
+                ),
+                const SizedBox(height: 12),
+
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ProfilePageNew()),
+                    );
+                  },
+                  child: const Text('Profile'),
+                ),
+                const SizedBox(height: 12),
+
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const SettingsPage()),
+                    );
+                  },
+                  child: const Text('Settings'),
+                ),
+                const SizedBox(height: 12),
+
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const HelpSupportPage()),
+                    );
+                  },
+                  child: const Text('Help & Support'),
+                ),
+                const SizedBox(height: 30),
+                // ---- End of new buttons ----
+              ],
+            ),
+          ),
         ),
       ),
+
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
@@ -95,14 +136,12 @@ class HomePage extends StatelessWidget {
         currentIndex: 0,
         type: BottomNavigationBarType.fixed,
         onTap: (index) {
-          // Redundant check since HomePage is for logged-in users, but kept for safety
           if (!auth.isLoggedIn) {
             Navigator.push(context, MaterialPageRoute(builder: (_) => const LoginPage()));
             return;
           }
           switch (index) {
             case 0:
-              // Stay on home
               break;
             case 1:
               Navigator.push(context, MaterialPageRoute(builder: (_) => const CartPage()));
